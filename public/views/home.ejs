@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <% if (logueado) { %>
+            <div class="alert alert-success mt-4 mb-4" role="alert">
+                <div class="row">
+                    <div class="col">
+                        <h3>Bienvenido/a  <strong><%= nombre %></strong></h3>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-danger" onclick="location.href='/logout'">Logout</button>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <h1 class="mb-4 mt-2">Tabla de productos</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody id="table-body-productos">
+
+            </tbody>
+            
+        </table>
+        <div id="sin-productos"></div>
+
+        <!-- Chat -->
+        <div class="row mt-4 mb-4">
+            <div class="col col-sm-2"></div>
+            <div class="col col-sm-8">
+                <h2 class="mt-4 mb-4">Centro de mensajes</h2>
+                <input class="form-control" id="email" type="email" placeholder="Email *" required>
+                <div class="error" id="error-mensajes">Debe ingresar un email</div>
+                <input class="form-control mt-2" id="nombre" type="text" placeholder="Nombre *" required>
+                <input class="form-control mt-2" id="apellido" type="text" placeholder="Apellido *" required>
+                <input class="form-control mt-2" id="edad" type="number" placeholder="Edad *" required>
+                <input class="form-control mt-2" id="alias" type="text" placeholder="Alias *" required>
+                <input class="form-control mt-2" id="avatar" type="text" placeholder="Avatar *" required>
+                <input class="form-control mt-2" id="mensaje" type="text" placeholder="Ingresa un mensaje" >
+                <button type="button" class="btn btn-primary mt-2" id="btn-chat">Enviar</button>
+
+                <div class="mt-4 mb-4 pt-4 pb-4" id="mensajes"> </div>
+            </div>
+            <div class="col col-sm-2"></div>
+        </div>
+
+    </div>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/home.js"></script>
+
+    <style>
+        .cuerpo-mensaje .email{
+            color: blue;
+            font-weight: bold;
+        }
+
+        .cuerpo-mensaje .fecha{
+            color: brown;
+        }
+
+        .cuerpo-mensaje .mensaje{
+            color: green;
+            font-style: italic;
+        }
+        .error{
+            color: red;
+            display: none;
+        }
+    </style>
+</body>
+</html>
