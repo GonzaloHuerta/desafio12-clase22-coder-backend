@@ -30,8 +30,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const mensajes = await api.getAll();
-const productos = [];
-const usuarios = [];
 
 app.get('/', (req, res)=>{
     if(req.session.user){
@@ -47,7 +45,6 @@ app.get('/login', (req, res)=>{
     }else{
         res.render('login');
     }
-    
 })
 
 app.post('/login', (req, res)=>{
